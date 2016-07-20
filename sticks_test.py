@@ -31,3 +31,12 @@ def test_is_game_over_when_one_stick_left():
 
     assert is_game_over(sticks_left1) == True
     assert is_game_over(sticks_left2) == False
+
+def test_setting_up_list_for_ai():
+
+    assert set_up_list_ai()[0] == (2, [1, 2, 3])
+
+def test_get_computer_choice_returns_1_2_or_3():
+    sticks_left2 = 16
+
+    assert get_computer_choice(16) in [1, 2, 3]

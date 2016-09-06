@@ -1,6 +1,7 @@
 import random
 import sys
 
+
 def check_initial_sticks(user_in):
     try:
         if int(user_in) <= 100 and int(user_in) >= 10:
@@ -15,7 +16,8 @@ def check_player_choice(user_in):
     try:
         if int(user_in) in [1, 2, 3]:
             return True
-        else: return False
+        else:
+            return False
     except ValueError:
         return False
 
@@ -41,7 +43,6 @@ def starting_player_vs_player():
             print("That was not a valid choice.")
 
 
-
 def get_user_choice(user_in):
     while True:
         if check_player_choice(user_in):
@@ -57,11 +58,10 @@ def reset_board(board):
         print("There are {} sticks left on the board.".format(board))
 
 
-
 def player_vs_player():
     board = starting_player_vs_player()
     while True:
-        player1_choice = get_user_choice(input("Player 1: How many sticks would you like to take away? (1, 2, 3)\n\t>"))
+        player1_choice = get_user_choice(input("""Player 1: How many sticks would you like to take away? (1, 2, 3)\n\t>"""))
         board -= player1_choice
         reset_board(board)
         if is_game_over(board):
@@ -76,15 +76,14 @@ def player_vs_player():
             play_again()
             break
 
-# AI part
 
+# AI part
 def set_up_list_ai():
     my_list = list(range(2, 101))
     for number in my_list:
         my_list[number-2] = (number, [1, 2, 3])
 
     return my_list
-
 
 
 def get_computer_choice(sticks_left):
@@ -133,12 +132,14 @@ def play_ai_vs_player():
             play_again()
             break
 
+
 def play_again():
     again = input("Do you want to play again? Y/n\n\t>")
     if again.lower() == 'y':
         main()
     else:
         sys.exit()
+
 
 def main():
     against = input("Do you want to play against a [P]artner, or the [C]omputer?")
